@@ -41,7 +41,8 @@
 
 - (void)getUrl:(NSString*)url block:(void(^)(NSString *body))block {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        Jxb_Http_Http* http = [[Jxb_Http_Http alloc] initWithCookie:[[NSUserDefaults standardUserDefaults] objectForKey:kLoginToken]];
+        NSString* cookie = [[NSUserDefaults standardUserDefaults] objectForKey:kLoginToken];
+        Jxb_Http_Http* http = [[Jxb_Http_Http alloc] initWithCookie:cookie];
         NSString* result = [http getDataString:url method:@"GET" postbody:nil encoding:0 dicHeader:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             block(result);

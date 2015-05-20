@@ -88,6 +88,7 @@
     if (_delegate && [_delegate respondsToSelector:@selector(beginLogin:)])
         [_delegate beginLogin:[_vUser getStringValue]];
     
+    __weak typeof (self) wSelf = self;
     [[XBPgyerModel sharedInstance] login:[_vUser getStringValue] pwd:[_vPwd getStringValue] block:^(NSObject* result, NSString* cookie){
         NSError* error = nil;
         NSDictionary* dic = [NSDictionary dictionaryWithJSONString:(NSString*)result error:&error];
@@ -104,18 +105,10 @@
                 [[NSUserDefaults standardUserDefaults] setObject:[_vUser getStringValue] forKey:kLoginUid];
                 [[NSUserDefaults standardUserDefaults] setObject:[_vPwd getStringValue] forKey:kLoginPwd];
                 [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:kLoginToken];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 NSLog(@"%@",cookie);
-                
-                [[XBPgyerModel sharedInstance] getUrl:@"http://www.pgyer.com/doc/api" block:^(NSString* body){
-                    NSString* apiKey = [XBCommon getMidString:body front:@"&_api_key=" end:@"&"];
-                    NSString* userKey = [XBCommon getMidString:body front:@"var uk = '" end:@"'"];
-                    [[NSUserDefaults standardUserDefaults] setObject:apiKey forKey:kPgyerApikey];
-                    [[NSUserDefaults standardUserDefaults] setObject:userKey forKey:kPgyerUserkey];
-                    
-                    if (_delegate && [_delegate respondsToSelector:@selector(endLogin:)])
-                        [_delegate endLogin:YES];
-                }];
-                
+
+                [wSelf performSelector:@selector(getApiInfo) withObject:nil afterDelay:1];
             }
             else {
                 NSLog(@"%@",[dic objectForKey:@"message"]);
@@ -127,6 +120,17 @@
     }];
 }
 
+- (void)getApiInfo {
+    [[XBPgyerModel sharedInstance] getUrl:@"http://www.pgyer.com/doc/api" block:^(NSString* body){
+        NSString* apiKey = [XBCommon getMidString:body front:@"&_api_key=" end:@"&"];
+        NSString* userKey = [XBCommon getMidString:body front:@"var uk = '" end:@"'"];
+        [[NSUserDefaults standardUserDefaults] setObject:apiKey forKey:kPgyerApikey];
+        [[NSUserDefaults standardUserDefaults] setObject:userKey forKey:kPgyerUserkey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (_delegate && [_delegate respondsToSelector:@selector(endLogin:)])
+            [_delegate endLogin:YES];
+    }];
+}
 
 - (void)setHidden:(BOOL)hidden
 {

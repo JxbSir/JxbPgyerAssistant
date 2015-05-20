@@ -84,8 +84,8 @@
 - (void)endLogin:(BOOL)bSuccess {
     [self hiddenAll];
     if(bSuccess){
-        _userView.hidden = NO;
         [_userView reload];
+        _userView.hidden = NO;
     }
     else {
         _loginView.hidden = NO;
