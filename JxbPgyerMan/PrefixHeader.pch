@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  JxbPgyerMan
+//
+//  Created by Peter Jin on https://github.com/JxbSir  15/5/19.
+//  Copyright (c) 2015年 Peter Jin .  Mail:i@Jxb.name All rights reserved.
+//
+
+#import "Constant.h"
+
+#define kLoginToken      @"kLoginToken"
+#define kLoginUid        @"kLoginUid"
+#define kLoginPwd        @"kLoginPwd"
+#define kPgyerApikey     @"kPgyerApikey"
+#define kPgyerUserkey    @"kPgyerUserkey"
+#define kShowQRNotify    @"kShowQRNotify"
