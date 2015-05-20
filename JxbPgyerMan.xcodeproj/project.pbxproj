@@ -42,6 +42,8 @@
 		D0CAC59C1B0A38BC006D5763 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CAC59B1B0A38BC006D5763 /* Foundation.framework */; };
 		D0CAC5A11B0A38BC006D5763 /* JxbPgyerMan.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D0CAC5A01B0A38BC006D5763 /* JxbPgyerMan.xcscheme */; };
 		D0CAC5A41B0A38BC006D5763 /* JxbPgyerMan.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CAC5A31B0A38BC006D5763 /* JxbPgyerMan.m */; };
+		D0CC19121B0CA71D00A3CC39 /* XBLoginCodeWC.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC19101B0CA71D00A3CC39 /* XBLoginCodeWC.m */; };
+		D0CC19131B0CA71D00A3CC39 /* XBLoginCodeWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CC19111B0CA71D00A3CC39 /* XBLoginCodeWC.xib */; };
 		D0D879DC1B0C754000A9866F /* XBQrWC.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D879DA1B0C754000A9866F /* XBQrWC.m */; };
 		D0D879DD1B0C754000A9866F /* XBQrWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D879DB1B0C754000A9866F /* XBQrWC.xib */; };
 		D0F4A5CE1B0C1C3F00BC7D30 /* XBPgyerUploadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A5CD1B0C1C3F00BC7D30 /* XBPgyerUploadView.m */; };
@@ -123,6 +125,9 @@
 		D0CAC5A01B0A38BC006D5763 /* JxbPgyerMan.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = JxbPgyerMan.xcscheme; path = JxbPgyerMan.xcodeproj/xcshareddata/xcschemes/JxbPgyerMan.xcscheme; sourceTree = SOURCE_ROOT; };
 		D0CAC5A21B0A38BC006D5763 /* JxbPgyerMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JxbPgyerMan.h; sourceTree = "<group>"; };
 		D0CAC5A31B0A38BC006D5763 /* JxbPgyerMan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JxbPgyerMan.m; sourceTree = "<group>"; };
+		D0CC190F1B0CA71D00A3CC39 /* XBLoginCodeWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoginCodeWC.h; sourceTree = "<group>"; };
+		D0CC19101B0CA71D00A3CC39 /* XBLoginCodeWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoginCodeWC.m; sourceTree = "<group>"; };
+		D0CC19111B0CA71D00A3CC39 /* XBLoginCodeWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBLoginCodeWC.xib; sourceTree = "<group>"; };
 		D0D879D91B0C754000A9866F /* XBQrWC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBQrWC.h; sourceTree = "<group>"; };
 		D0D879DA1B0C754000A9866F /* XBQrWC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBQrWC.m; sourceTree = "<group>"; };
 		D0D879DB1B0C754000A9866F /* XBQrWC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBQrWC.xib; sourceTree = "<group>"; };
@@ -165,6 +170,9 @@
 				D0D879D91B0C754000A9866F /* XBQrWC.h */,
 				D0D879DA1B0C754000A9866F /* XBQrWC.m */,
 				D0D879DB1B0C754000A9866F /* XBQrWC.xib */,
+				D0CC190F1B0CA71D00A3CC39 /* XBLoginCodeWC.h */,
+				D0CC19101B0CA71D00A3CC39 /* XBLoginCodeWC.m */,
+				D0CC19111B0CA71D00A3CC39 /* XBLoginCodeWC.xib */,
 			);
 			path = MainWindow;
 			sourceTree = "<group>";
@@ -459,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06A5FC31B0AC9A200647AD2 /* XBMainWC.xib in Resources */,
+				D0CC19131B0CA71D00A3CC39 /* XBLoginCodeWC.xib in Resources */,
 				D06A5FD71B0B010B00647AD2 /* icon_loading.gif in Resources */,
 				D0D879DD1B0C754000A9866F /* XBQrWC.xib in Resources */,
 				D06A5FCF1B0AE66300647AD2 /* icon_pwd.png in Resources */,
@@ -478,6 +487,7 @@
 			files = (
 				D0F4A5E31B0C467400BC7D30 /* XBPgyerAppView.m in Sources */,
 				D06A5FC11B0AC9A200647AD2 /* XBPgyerUserInfo.m in Sources */,
+				D0CC19121B0CA71D00A3CC39 /* XBLoginCodeWC.m in Sources */,
 				D0CAC5A41B0A38BC006D5763 /* JxbPgyerMan.m in Sources */,
 				D06A5FC21B0AC9A200647AD2 /* XBMainWC.m in Sources */,
 				D06A5FC01B0AC9A200647AD2 /* XBPgyerLogin.m in Sources */,

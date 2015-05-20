@@ -85,11 +85,33 @@
         return;
     }
     
+    __weak typeof (self) wSelf = self;
     if (_delegate && [_delegate respondsToSelector:@selector(beginLogin:)])
         [_delegate beginLogin:[_vUser getStringValue]];
     
+    [[XBPgyerModel sharedInstance] preLogin:[_vUser getStringValue] block:^(NSObject* result ,NSString* cookie){
+        __block NSString* captcha = nil;
+        if([XBCommon containString:(NSString*)result cStr:@"id=\"captcha\""])
+        {
+            [[XBPgyerModel sharedInstance] getCode:cookie block:^(NSObject* codeData){
+                    if(_delegate && [_delegate respondsToSelector:@selector(showCode:)])
+                    {
+                        captcha = [_delegate showCode:(NSData*)codeData];
+                        [wSelf doLogin:captcha];
+                    }
+            }];
+        }
+        else
+        {
+            [wSelf doLogin:nil];
+        }
+    }];
+}
+
+- (void)doLogin:(NSString*)captcha
+{
     __weak typeof (self) wSelf = self;
-    [[XBPgyerModel sharedInstance] login:[_vUser getStringValue] pwd:[_vPwd getStringValue] block:^(NSObject* result, NSString* cookie){
+    [[XBPgyerModel sharedInstance] login:[_vUser getStringValue] pwd:[_vPwd getStringValue] code:captcha block:^(NSObject* result, NSString* cookie){
         NSError* error = nil;
         NSDictionary* dic = [NSDictionary dictionaryWithJSONString:(NSString*)result error:&error];
         if (!dic || error)
@@ -107,7 +129,7 @@
                 [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:kLoginToken];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 NSLog(@"%@",cookie);
-
+                
                 [wSelf performSelector:@selector(getApiInfo) withObject:nil afterDelay:1];
             }
             else {

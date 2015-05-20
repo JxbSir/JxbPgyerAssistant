@@ -27,14 +27,40 @@
     return model;
 }
 
-- (void)login:(NSString*)name pwd:(NSString*)pwd block:(void(^)(NSObject *resultObject,NSString *cookie))block {
+- (void)preLogin:(NSString*)name block:(void(^)(NSObject *resultObject,NSString *cookie))block {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        Jxb_Http_Http* http = [[Jxb_Http_Http alloc] initWithCookie:nil];
+        NSString* _name = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)name,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
+        NSString* url = [@"http://www.pgyer.com/user/login?email=" stringByAppendingString:_name];
+        NSString* result = [http getDataString:url method:@"GET" postbody:nil encoding:0 dicHeader:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(result,http.myCookie);
+        });
+    });
+
+}
+
+- (void)login:(NSString*)name pwd:(NSString*)pwd code:(NSString*)code block:(void(^)(NSObject *resultObject,NSString *cookie))block {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         Jxb_Http_Http* http = [[Jxb_Http_Http alloc] initWithCookie:nil];
         NSString* _name = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)name,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
         NSString* data = [NSString stringWithFormat:@"email=%@&password=%@",_name,[pwd stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        if (code && code.length > 0)
+            data = [data stringByAppendingFormat:@"&captcha=%@",code];
         NSString* result = [http getDataString:@"http://www.pgyer.com/user/login" method:@"POST" postbody:data encoding:0 dicHeader:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             block(result,http.myCookie);
+        });
+    });
+}
+
+- (void)getCode:(NSString*)cookie block:(void(^)(NSObject *body))block {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString* cookie = [[NSUserDefaults standardUserDefaults] objectForKey:kLoginToken];
+        Jxb_Http_Http* http = [[Jxb_Http_Http alloc] initWithCookie:cookie];
+        NSData* result = [http getData:@"http://www.pgyer.com/captcha/view" method:@"GET" postbody:nil encoding:0 dicHeader:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(result);
         });
     });
 }

@@ -11,6 +11,7 @@
 @protocol XBPgyerLoginDelegate <NSObject>
 - (void)beginLogin:(NSString*)loginName;
 - (void)endLogin:(BOOL)bSuccess;
+- (NSString*)showCode:(NSData*)data;
 @end
 
 @interface XBPgyerLogin : NSView

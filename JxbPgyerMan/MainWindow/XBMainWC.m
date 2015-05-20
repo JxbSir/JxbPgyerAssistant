@@ -12,6 +12,7 @@
 #import "XBPgyerUserInfo.h"
 #import "XBPgyerUploadView.h"
 #import "XBQrWC.h"
+#import "XBLoginCodeWC.h"
 
 @interface XBMainWC ()<XBPgyerLoginDelegate,XBPgyerUserInfoDelegate>
 @property(nonatomic,strong)XBPgyerLogin*        loginView;
@@ -90,6 +91,13 @@
     else {
         _loginView.hidden = NO;
     }
+}
+
+- (NSString*)showCode:(NSData *)data {
+    XBLoginCodeWC* wc = [[XBLoginCodeWC alloc] initWithWindowNibName:@"XBLoginCodeWC"];
+    wc.imgData = data;
+    [[NSApplication sharedApplication] runModalForWindow:wc.window];
+    return wc.strCode;
 }
 
 - (void)beginUpload {

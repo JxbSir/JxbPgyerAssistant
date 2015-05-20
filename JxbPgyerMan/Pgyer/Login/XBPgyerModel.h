@@ -21,8 +21,9 @@
 @interface XBPgyerModel : NSObject
 
 + (id)sharedInstance;
-
-- (void)login:(NSString*)name pwd:(NSString*)pwd block:(void(^)(NSObject *resultObject,NSString *cookie))block;
+- (void)preLogin:(NSString*)name block:(void(^)(NSObject *resultObject,NSString *cookie))block;
+- (void)login:(NSString*)name pwd:(NSString*)pwd code:(NSString*)code block:(void(^)(NSObject *resultObject,NSString *cookie))block;
+- (void)getCode:(NSString*)cookie block:(void(^)(NSObject *body))block;
 - (void)getUrl:(NSString*)url block:(void(^)(NSString *body))block;
 - (void)getMyApps:(void(^)(NSString *body))block;
 - (void)getMyAppDetail:(NSString*)aKey block:(void(^)(NSString *body))block;
