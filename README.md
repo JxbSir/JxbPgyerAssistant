@@ -6,7 +6,7 @@
 
 2.关闭XCode，重新启动。
 
-3.在XCode的菜单Window下面的Pgyer Assistant菜单，如图
+3.在XCode的菜单Window下面的Pgyer Assistant菜单(快捷键打开：shift+control+J)，如图
 
 ![](https://raw.githubusercontent.com/JxbSir/JxbPgyerAssistant/master/Shoot/position.png)
 
