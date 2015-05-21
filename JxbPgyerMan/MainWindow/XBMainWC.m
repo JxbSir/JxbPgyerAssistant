@@ -13,6 +13,7 @@
 #import "XBPgyerUploadView.h"
 #import "XBQrWC.h"
 #import "XBLoginCodeWC.h"
+#import "NSView+Frame.h"
 
 @interface XBMainWC ()<XBPgyerLoginDelegate,XBPgyerUserInfoDelegate>
 @property(nonatomic,strong)XBPgyerLogin*        loginView;
@@ -32,21 +33,36 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showQR:) name:kShowQRNotify object:nil];
     
-    _loadView = [[XBPgyerLoginLoading alloc] initWithFrame:[self.window.contentView frame]];
+    NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:@"关注Github：https://github.com/JxbSir"];
+    [str addAttribute:NSForegroundColorAttributeName value:[NSColor grayColor] range:NSMakeRange(0, 9)];
+    [str addAttribute:NSForegroundColorAttributeName value:mainColor range:NSMakeRange(9, str.length - 9)];
+    NSTextField* lblTitle = [[NSTextField alloc] initWithFrame:CGRectMake(20, 5, [self.window.contentView frame].size.width, 20)];
+    [lblTitle setEditable:NO];
+    [lblTitle setBordered:NO];
+    [lblTitle setDrawsBackground:NO];
+    [lblTitle setBackgroundColor:[NSColor clearColor]];
+    lblTitle.attributedStringValue = str;
+    [self.window.contentView addSubview:lblTitle];
+    NSClickGestureRecognizer* ges = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(click:)];
+    [lblTitle addGestureRecognizer:ges];
+    
+    CGFloat distance = 30;
+    CGFloat height = [self.window.contentView frame].size.height - distance;
+    _loadView = [[XBPgyerLoginLoading alloc] initWithFrame:[self.window.contentView setFrameYHeight:distance height:height]];
     _loadView.hidden = YES;
     [self.window.contentView addSubview:_loadView];
     
-    _loginView = [[XBPgyerLogin alloc] initWithFrame:[self.window.contentView frame]];
+    _loginView = [[XBPgyerLogin alloc] initWithFrame:[self.window.contentView setFrameYHeight:distance height:height]];
     _loginView.hidden = YES;
     _loginView.delegate = self;
     [self.window.contentView addSubview:_loginView];
     
-    _userView = [[XBPgyerUserInfo alloc] initWithFrame:[self.window.contentView frame]];
+    _userView = [[XBPgyerUserInfo alloc] initWithFrame:[self.window.contentView setFrameYHeight:distance height:height]];
     _userView.hidden = YES;
     _userView.delegate = self;
     [self.window.contentView addSubview:_userView];
     
-    _uploadView = [[XBPgyerUploadView alloc] initWithFrame:[self.window.contentView frame]];
+    _uploadView = [[XBPgyerUploadView alloc] initWithFrame:[self.window.contentView setFrameYHeight:distance height:height]];
     _uploadView.hidden = YES;
     [self.window.contentView addSubview:_uploadView];
     
@@ -73,6 +89,13 @@
     XBQrWC* wc = [[XBQrWC alloc] initWithWindowNibName:@"XBQrWC"];
     wc.akey = akey;
     [[NSApplication sharedApplication] runModalForWindow:wc.window];
+}
+
+- (void)click:(NSClickGestureRecognizer*)ges {
+    if(ges.state == NSGestureRecognizerStateEnded)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/JxbSir"]];
+    }
 }
 
 #pragma mark - delegate

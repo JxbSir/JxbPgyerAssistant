@@ -38,6 +38,7 @@
 		D0825C651B0B638400C8CF0F /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D0825C5A1B0B638400C8CF0F /* AFURLRequestSerialization.m */; };
 		D0825C661B0B638400C8CF0F /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D0825C5C1B0B638400C8CF0F /* AFURLResponseSerialization.m */; };
 		D0825C671B0B638400C8CF0F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0825C5E1B0B638400C8CF0F /* AFURLSessionManager.m */; };
+		D0C53F641B0D6FAD004D0769 /* NSView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C53F631B0D6FAD004D0769 /* NSView+Frame.m */; };
 		D0CAC59A1B0A38BC006D5763 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CAC5991B0A38BC006D5763 /* AppKit.framework */; };
 		D0CAC59C1B0A38BC006D5763 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CAC59B1B0A38BC006D5763 /* Foundation.framework */; };
 		D0CAC5A11B0A38BC006D5763 /* JxbPgyerMan.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = D0CAC5A01B0A38BC006D5763 /* JxbPgyerMan.xcscheme */; };
@@ -118,6 +119,8 @@
 		D0825C5C1B0B638400C8CF0F /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		D0825C5D1B0B638400C8CF0F /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		D0825C5E1B0B638400C8CF0F /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		D0C53F621B0D6FAD004D0769 /* NSView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+Frame.h"; path = "Pgyer/Tools/NSView+Frame.h"; sourceTree = "<group>"; };
+		D0C53F631B0D6FAD004D0769 /* NSView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+Frame.m"; path = "Pgyer/Tools/NSView+Frame.m"; sourceTree = "<group>"; };
 		D0CAC5961B0A38BC006D5763 /* JxbPgyerMan.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JxbPgyerMan.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CAC5991B0A38BC006D5763 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		D0CAC59B1B0A38BC006D5763 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -307,6 +310,8 @@
 			children = (
 				D06A600C1B0B251D00647AD2 /* XBCommon.h */,
 				D06A600D1B0B251D00647AD2 /* XBCommon.m */,
+				D0C53F621B0D6FAD004D0769 /* NSView+Frame.h */,
+				D0C53F631B0D6FAD004D0769 /* NSView+Frame.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C53F641B0D6FAD004D0769 /* NSView+Frame.m in Sources */,
 				D0F4A5E31B0C467400BC7D30 /* XBPgyerAppView.m in Sources */,
 				D06A5FC11B0AC9A200647AD2 /* XBPgyerUserInfo.m in Sources */,
 				D0CC19121B0CA71D00A3CC39 /* XBLoginCodeWC.m in Sources */,

@@ -67,7 +67,7 @@
         [_btnPrev setAction:@selector(btnPrevAction)];
         [self addSubview:_btnPrev];
         
-        NSButton* btnUpload = [[NSButton alloc] initWithFrame:CGRectMake(30, 20, frameRect.size.width - 60, 30)];
+        NSButton* btnUpload = [[NSButton alloc] initWithFrame:CGRectMake(30, 0, frameRect.size.width - 60, 30)];
         [btnUpload setTitle:@"分发iOS应用"];
         [btnUpload setWantsLayer:YES];
         btnUpload.layer.borderWidth = 2;
@@ -79,7 +79,7 @@
         [self addSubview:btnUpload];
 
         CGFloat w = 30 + 3 * AppIconHeight;
-        _appViews = [[XBPgyerAppsView alloc] initWithFrame:CGRectMake((frameRect.size.width - w) / 2, 60, w, AppIconHeight + 10)];
+        _appViews = [[XBPgyerAppsView alloc] initWithFrame:CGRectMake((frameRect.size.width - w) / 2, 45, w, AppIconHeight + 10)];
         [self addSubview:_appViews];
         
         [self loadMyApp];
@@ -91,7 +91,7 @@
     [_appViews removeFromSuperview];
     _appViews = nil;
     CGFloat w = 30 + 3 * AppIconHeight;
-    _appViews = [[XBPgyerAppsView alloc] initWithFrame:CGRectMake((self.frame.size.width - w) / 2, 60, w, AppIconHeight + 10)];
+    _appViews = [[XBPgyerAppsView alloc] initWithFrame:CGRectMake((self.frame.size.width - w) / 2, 45, w, AppIconHeight + 10)];
     [self addSubview:_appViews];
     
     [[XBPgyerModel sharedInstance] getMyApps:^(NSString* result){

@@ -32,19 +32,19 @@
         [lblTitle setBackgroundColor:[NSColor clearColor]];
         [self addSubview:lblTitle];
         
-        _vUser = [[XBTextFeild alloc] initWithFrame:CGRectMake(70, frameRect.size.height - 80, frameRect.size.width - 140, 34) isPass:NO];
+        _vUser = [[XBTextFeild alloc] initWithFrame:CGRectMake(50, frameRect.size.height - 85, frameRect.size.width - 140, 34) isPass:NO];
         _vUser.delegate = self;
         [_vUser setPlaceHolder:@"请输入账号"];
         [_vUser setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:kLoginUid]];
         [self addSubview:_vUser];
         
-        _vPwd = [[XBTextFeild alloc] initWithFrame:CGRectMake(70, frameRect.size.height - 120, frameRect.size.width - 140, 34) isPass:YES];
+        _vPwd = [[XBTextFeild alloc] initWithFrame:CGRectMake(50, frameRect.size.height - 130, frameRect.size.width - 140, 34) isPass:YES];
         _vPwd.delegate = self;
         [_vPwd setPlaceHolder:@"请输入密码"];
         [_vPwd setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:kLoginPwd]];
         [self addSubview:_vPwd];
         
-        NSButton* btnLogin = [[NSButton alloc] initWithFrame:CGRectMake(70, 20, 100, 30)];
+        NSButton* btnLogin = [[NSButton alloc] initWithFrame:CGRectMake(50, 10, 100, 30)];
         [btnLogin setTitle:@"登录"];
         [btnLogin setWantsLayer:YES];
         btnLogin.layer.borderWidth = 2;
@@ -54,7 +54,18 @@
         [btnLogin setAction:@selector(btnLoginAction)];
         [self addSubview:btnLogin];
         
-        _lblMsg = [[NSTextField alloc] initWithFrame:CGRectMake(160, 22, frameRect.size.width - 190, 20)];
+        NSTextField* lblReg = [[NSTextField alloc] initWithFrame:CGRectMake(frameRect.size.width - 75, frameRect.size.height - 80, 100, 20)];
+        [lblReg setStringValue:@"注册账号"];
+        [lblReg setEditable:NO];
+        [lblReg setBordered:NO];
+        [lblReg setDrawsBackground:NO];
+        [lblReg setBackgroundColor:[NSColor clearColor]];
+        [lblReg setTextColor:[NSColor grayColor]];
+        [self addSubview:lblReg];
+        NSClickGestureRecognizer* ges = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(clickReg:)];
+        [lblReg addGestureRecognizer:ges];
+        
+        _lblMsg = [[NSTextField alloc] initWithFrame:CGRectMake(130, 12, frameRect.size.width - 140, 20)];
         [_lblMsg setTextColor:[NSColor redColor]];
         [_lblMsg setFont:[NSFont systemFontOfSize:11]];
         [_lblMsg setAlignment:NSCenterTextAlignment];
@@ -67,6 +78,14 @@
         [_vUser performSelector:@selector(setFocus) withObject:nil afterDelay:0.2];
     }
     return self;
+}
+
+- (void)clickReg:(NSClickGestureRecognizer*)ges {
+    if(ges.state == NSGestureRecognizerStateEnded)
+    {
+        NSLog(@"%@",@"click reg");
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.pgyer.com/user/register"]];
+    }
 }
 
 - (void)btnLoginAction
