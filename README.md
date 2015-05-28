@@ -1,6 +1,8 @@
 # JxbPgyerAssistant
 依托蒲公英应用测试分发平台，用于XCode的一款插件，方便开发者上传生成二维码。
 
+`此插件已被蒲公英官方收录：http://www.pgyer.com/doc/view/xcode_plugin`
+
 #使用方法
 1.打开工程JxbPgyerMan.project，运行即可。
 
