@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>1E63B95F-CBD5-415D-8BD1-A4CAF6AB98A5</string>
 	<key>IDESourceControlProjectName</key>
-	<string>JxbPgyerMan</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A5C6DBDF14006BD8985BB53B47F24FD364F6C1C1</key>
 		<string>https://github.com/JxbSir/JxbPgyerAssistant.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JxbPgyerMan.xcodeproj</string>
+	<string>JxbPgyerMan.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A5C6DBDF14006BD8985BB53B47F24FD364F6C1C1</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>A5C6DBDF14006BD8985BB53B47F24FD364F6C1C1</string>
 			<key>IDESourceControlWCCName</key>
-			<string>JxbPgyerMan</string>
+			<string>JxbPgyer</string>
 		</dict>
 	</array>
 </dict>
